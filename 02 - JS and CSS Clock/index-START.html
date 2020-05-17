@@ -5,7 +5,7 @@
   <title>JS + CSS Clock</title>
 </head>
 <body>
-
+  <audio data-key="76" src="../01 - JavaScript Drum Kit/sounds/tink.wav"></audio>
 
     <div class="clock">
       <div class="clock-face">
@@ -74,9 +74,17 @@
 const secondHand=document.querySelector('.second-hand')
 const minuteHand=document.querySelector('.min-hand')
 const hourHand=document.querySelector('.hour-hand')
+  const noise = document.querySelector(`audio[data-key="76"]`);
 
 function clockDegree(t,d){
   return ((t/d)*360)+90
+}
+
+
+function playNoise(){
+  if(!noise){return};
+  noise.currentTime=0
+  noise.play()
 }
 
 function setDate(){
@@ -90,9 +98,14 @@ function setDate(){
   secondHand.style.transform=`rotate(${secondsDegree}deg)`;
   minuteHand.style.transform=`rotate(${minutesDegree}deg)`;
   hourHand.style.transform=`rotate(${hoursDegree}deg)`
+  // playNoise()
 }
 
+
+
 minuteHand.style.background='red'
+hourHand.style.background='white'
+hourHand.style.height='15px'
 hourHand.style.zindex=5
 setInterval(setDate, 1000)
 
